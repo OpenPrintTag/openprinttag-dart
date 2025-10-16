@@ -1,4 +1,4 @@
-# open_print_tag
+# OpenPrintTag
 
 Encode and decode OpenPrintTag data to/from CBOR format.
 
