@@ -1,93 +1,65 @@
 # OpenPrintTag (Dart)
 
-Encode and decode OpenPrintTag data to/from CBOR format.
+Dart/Flutter library for encoding and decoding OpenPrintTag data on NFC tags. Based on the [Python OpenPrintTag library](https://github.com/prusa3d/OpenPrintTag).
 
-This is the Dart/Flutter implementation based on the [Python OpenPrintTag library](https://github.com/prusa3d/OpenPrintTag).
+## Installation
 
-## Features
-
-- Works with any NDEF library (ndef, ndef_record, or your own)
-- Handles material info: type, temperatures, brand, colors, etc.
-- Smart float compression (saves space on NFC tags)
-- Automatic enum conversion
-- Supports meta, main, and aux data sections
+```yaml
+dependencies:
+  open_print_tag: ^0.0.1
+```
 
 ## Usage
 
-This library handles the CBOR encoding/decoding. You handle the NDEF and NFC parts with whatever library you like.
-
 ```dart
-import 'dart:typed_data';
 import 'package:open_print_tag/open_print_tag.dart';
 
-// Example using package:ndef (you can use any NDEF library)
-import 'package:ndef/ndef.dart' as ndef;
+// Create parser
+final parser = OpenPrintTagParser.create();
 
-void main() async {
-  // Create parser (uses generated data constants - synchronous)
-  final parser = OpenPrintTagParser.create();
-  
-  // === READING ===
-  // 1. Read NDEF message using your preferred NDEF library
-  // final records = ndef.decodeRawNdefMessage(rawBytes);
-  
-  // 2. Find and extract the OpenPrintTag MIME record payload
-  // Look for MIME type: OpenPrintTagConstants.mimeType
-  // final payload = extractPayloadFromMimeRecord(records);
-  
-  // 3. Decode the binary payload
-  // final data = await parser.decode(payload);
-  // print('Material: ${data.main?.materialName}');
-  // print('Type: ${data.main?.materialType}'); // Enums are automatically converted to strings
-  
-  // === WRITING ===
-  // 1. Create material data
-  final newData = OpenPrintTagData(
-    main: OpenPrintTagMainData(
-      materialClass: 'FFF',
-      materialType: 'PLA',
-      materialName: 'My PLA',
-      minPrintTemperature: 200,
-      minBedTemperature: 60,
-    ),
-  );
-  
-  // 2. Encode to binary payload
-  final Uint8List payload = parser.encode(newData);
-  
-  // 3. Wrap in NDEF MIME record using your preferred NDEF library
-  final record = ndef.MimeRecord(
-    decodedType: OpenPrintTagConstants.mimeType,
-    payload: payload,
-  );
-  
-  // 4. Write to NFC tag using your NFC library
-  // await nfcLib.writeNdefMessage([record]);
-}
+// Write data
+final data = OpenPrintTagData(
+  main: OpenPrintTagMainData(
+    materialClass: 'FFF',
+    materialType: 'PLA',
+    materialName: 'My PLA',
+    minPrintTemperature: 200,
+    minBedTemperature: 60,
+  ),
+);
+
+final payload = parser.encode(data, size: 320); // 320 bytes for NTAG213
+
+// Read data
+final decoded = await parser.decode(payload);
+print('Material: ${decoded.main?.materialName}');
 ```
 
-### MIME Type
+### Update just auxiliary data
 
-Use `application/vnd.openprinttag` when creating NDEF MIME records.
-It's available as `OpenPrintTagConstants.mimeType`.
+Useful for tracking material consumption without rewriting the whole tag:
 
-### What this library does
+```dart
+final updatedPayload = await parser.updateAux(
+  existingPayload,
+  OpenPrintTagAuxData(consumedWeight: 150.5),
+);
+```
 
-- ✅ Converts `OpenPrintTagData` to CBOR bytes
-- ✅ Converts CBOR bytes back to `OpenPrintTagData`
-- ✅ Handles all the encoding details for you
+### Working with NDEF
 
-### What you need to provide
+The library handles OpenPrintTag CBOR encoding. You'll need an NDEF library to actually read/write NFC tags.
 
-- NDEF record handling (wrap/unwrap the CBOR payload)
-- NFC tag communication
-- Your choice of NDEF library
+MIME type: `application/vnd.openprinttag` (available as `OpenPrintTagConstants.mimeType`)
 
-Think of it this way: you handle getting data on/off the NFC tag, we handle the OpenPrintTag format.
+Common tag sizes: NTAG213 = 320 bytes, NTAG215 = 888 bytes, NTAG216 = 1904 bytes
 
-## Related Projects
+## Links
 
-- [OpenPrintTag (Python)](https://github.com/prusa3d/OpenPrintTag) - Original Python implementation
-- [OpenPrintTag Specification](https://specs.prusa3d.tech/) - Format documentation
+- [OpenPrintTag (Python)](https://github.com/prusa3d/OpenPrintTag) - Original implementation
+- [Specification](https://specs.prusa3d.tech/) - Format docs
+- [Repository](https://github.com/prusa3d/OpenPrintTag-dart)
 
-This Dart library provides the same functionality for Flutter and Dart applications.
+## License
+
+MIT
