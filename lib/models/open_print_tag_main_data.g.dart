@@ -49,17 +49,17 @@ abstract class _$OpenPrintTagMainDataCWProxy {
 
   OpenPrintTagMainData emptyContainerWeight(num? emptyContainerWeight);
 
-  OpenPrintTagMainData primaryColor(Uint8List? primaryColor);
+  OpenPrintTagMainData primaryColor(Color? primaryColor);
 
-  OpenPrintTagMainData secondaryColor0(Uint8List? secondaryColor0);
+  OpenPrintTagMainData secondaryColor0(Color? secondaryColor0);
 
-  OpenPrintTagMainData secondaryColor1(Uint8List? secondaryColor1);
+  OpenPrintTagMainData secondaryColor1(Color? secondaryColor1);
 
-  OpenPrintTagMainData secondaryColor2(Uint8List? secondaryColor2);
+  OpenPrintTagMainData secondaryColor2(Color? secondaryColor2);
 
-  OpenPrintTagMainData secondaryColor3(Uint8List? secondaryColor3);
+  OpenPrintTagMainData secondaryColor3(Color? secondaryColor3);
 
-  OpenPrintTagMainData secondaryColor4(Uint8List? secondaryColor4);
+  OpenPrintTagMainData secondaryColor4(Color? secondaryColor4);
 
   OpenPrintTagMainData transmissionDistance(num? transmissionDistance);
 
@@ -144,12 +144,12 @@ abstract class _$OpenPrintTagMainDataCWProxy {
     num? nominalFullLength,
     num? actualFullLength,
     num? emptyContainerWeight,
-    Uint8List? primaryColor,
-    Uint8List? secondaryColor0,
-    Uint8List? secondaryColor1,
-    Uint8List? secondaryColor2,
-    Uint8List? secondaryColor3,
-    Uint8List? secondaryColor4,
+    Color? primaryColor,
+    Color? secondaryColor0,
+    Color? secondaryColor1,
+    Color? secondaryColor2,
+    Color? secondaryColor3,
+    Color? secondaryColor4,
     num? transmissionDistance,
     List<String>? tags,
     num? density,
@@ -273,27 +273,27 @@ class _$OpenPrintTagMainDataCWProxyImpl
       call(emptyContainerWeight: emptyContainerWeight);
 
   @override
-  OpenPrintTagMainData primaryColor(Uint8List? primaryColor) =>
+  OpenPrintTagMainData primaryColor(Color? primaryColor) =>
       call(primaryColor: primaryColor);
 
   @override
-  OpenPrintTagMainData secondaryColor0(Uint8List? secondaryColor0) =>
+  OpenPrintTagMainData secondaryColor0(Color? secondaryColor0) =>
       call(secondaryColor0: secondaryColor0);
 
   @override
-  OpenPrintTagMainData secondaryColor1(Uint8List? secondaryColor1) =>
+  OpenPrintTagMainData secondaryColor1(Color? secondaryColor1) =>
       call(secondaryColor1: secondaryColor1);
 
   @override
-  OpenPrintTagMainData secondaryColor2(Uint8List? secondaryColor2) =>
+  OpenPrintTagMainData secondaryColor2(Color? secondaryColor2) =>
       call(secondaryColor2: secondaryColor2);
 
   @override
-  OpenPrintTagMainData secondaryColor3(Uint8List? secondaryColor3) =>
+  OpenPrintTagMainData secondaryColor3(Color? secondaryColor3) =>
       call(secondaryColor3: secondaryColor3);
 
   @override
-  OpenPrintTagMainData secondaryColor4(Uint8List? secondaryColor4) =>
+  OpenPrintTagMainData secondaryColor4(Color? secondaryColor4) =>
       call(secondaryColor4: secondaryColor4);
 
   @override
@@ -555,27 +555,27 @@ class _$OpenPrintTagMainDataCWProxyImpl
       primaryColor: primaryColor == const $CopyWithPlaceholder()
           ? _value.primaryColor
           // ignore: cast_nullable_to_non_nullable
-          : primaryColor as Uint8List?,
+          : primaryColor as Color?,
       secondaryColor0: secondaryColor0 == const $CopyWithPlaceholder()
           ? _value.secondaryColor0
           // ignore: cast_nullable_to_non_nullable
-          : secondaryColor0 as Uint8List?,
+          : secondaryColor0 as Color?,
       secondaryColor1: secondaryColor1 == const $CopyWithPlaceholder()
           ? _value.secondaryColor1
           // ignore: cast_nullable_to_non_nullable
-          : secondaryColor1 as Uint8List?,
+          : secondaryColor1 as Color?,
       secondaryColor2: secondaryColor2 == const $CopyWithPlaceholder()
           ? _value.secondaryColor2
           // ignore: cast_nullable_to_non_nullable
-          : secondaryColor2 as Uint8List?,
+          : secondaryColor2 as Color?,
       secondaryColor3: secondaryColor3 == const $CopyWithPlaceholder()
           ? _value.secondaryColor3
           // ignore: cast_nullable_to_non_nullable
-          : secondaryColor3 as Uint8List?,
+          : secondaryColor3 as Color?,
       secondaryColor4: secondaryColor4 == const $CopyWithPlaceholder()
           ? _value.secondaryColor4
           // ignore: cast_nullable_to_non_nullable
-          : secondaryColor4 as Uint8List?,
+          : secondaryColor4 as Color?,
       transmissionDistance: transmissionDistance == const $CopyWithPlaceholder()
           ? _value.transmissionDistance
           // ignore: cast_nullable_to_non_nullable
@@ -726,20 +726,20 @@ OpenPrintTagMainData _$OpenPrintTagMainDataFromJson(
   nominalFullLength: json['nominal_full_length'] as num?,
   actualFullLength: json['actual_full_length'] as num?,
   emptyContainerWeight: json['empty_container_weight'] as num?,
-  primaryColor: OpenPrintTagMainData._uint8ListFromJson(json['primary_color']),
-  secondaryColor0: OpenPrintTagMainData._uint8ListFromJson(
+  primaryColor: OpenPrintTagMainData._colorFromJson(json['primary_color']),
+  secondaryColor0: OpenPrintTagMainData._colorFromJson(
     json['secondary_color_0'],
   ),
-  secondaryColor1: OpenPrintTagMainData._uint8ListFromJson(
+  secondaryColor1: OpenPrintTagMainData._colorFromJson(
     json['secondary_color_1'],
   ),
-  secondaryColor2: OpenPrintTagMainData._uint8ListFromJson(
+  secondaryColor2: OpenPrintTagMainData._colorFromJson(
     json['secondary_color_2'],
   ),
-  secondaryColor3: OpenPrintTagMainData._uint8ListFromJson(
+  secondaryColor3: OpenPrintTagMainData._colorFromJson(
     json['secondary_color_3'],
   ),
-  secondaryColor4: OpenPrintTagMainData._uint8ListFromJson(
+  secondaryColor4: OpenPrintTagMainData._colorFromJson(
     json['secondary_color_4'],
   ),
   transmissionDistance: json['transmission_distance'] as num?,
@@ -793,20 +793,20 @@ Map<String, dynamic> _$OpenPrintTagMainDataToJson(
   'nominal_full_length': instance.nominalFullLength,
   'actual_full_length': instance.actualFullLength,
   'empty_container_weight': instance.emptyContainerWeight,
-  'primary_color': OpenPrintTagMainData._uint8ListToJson(instance.primaryColor),
-  'secondary_color_0': OpenPrintTagMainData._uint8ListToJson(
+  'primary_color': OpenPrintTagMainData._colorToJson(instance.primaryColor),
+  'secondary_color_0': OpenPrintTagMainData._colorToJson(
     instance.secondaryColor0,
   ),
-  'secondary_color_1': OpenPrintTagMainData._uint8ListToJson(
+  'secondary_color_1': OpenPrintTagMainData._colorToJson(
     instance.secondaryColor1,
   ),
-  'secondary_color_2': OpenPrintTagMainData._uint8ListToJson(
+  'secondary_color_2': OpenPrintTagMainData._colorToJson(
     instance.secondaryColor2,
   ),
-  'secondary_color_3': OpenPrintTagMainData._uint8ListToJson(
+  'secondary_color_3': OpenPrintTagMainData._colorToJson(
     instance.secondaryColor3,
   ),
-  'secondary_color_4': OpenPrintTagMainData._uint8ListToJson(
+  'secondary_color_4': OpenPrintTagMainData._colorToJson(
     instance.secondaryColor4,
   ),
   'transmission_distance': instance.transmissionDistance,
