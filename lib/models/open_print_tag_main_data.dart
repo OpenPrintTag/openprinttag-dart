@@ -282,31 +282,21 @@ class OpenPrintTagMainData {
   }
 
   Map<String, dynamic> toJson() {
-    final String? brandUuid =
-        this.brandUuid ?? OpenPrintTagUuidGenerator.buildBrandUuid(brandName);
+    final Map<String, dynamic> json = _$OpenPrintTagMainDataToJson(this);
 
-    final String? materialUuid =
-        this.materialUuid ??
-        OpenPrintTagUuidGenerator.buildMaterialUuid(brandUuid, materialName);
+    if (brandUuid != null && brandName != null) {
+      json.remove('brand_uuid');
+    }
 
-    final String? packageUuid =
-        this.packageUuid ??
-        OpenPrintTagUuidGenerator.buildPackageUuid(brandUuid, gtin);
+    if (materialUuid != null && materialName != null && brandName != null) {
+      json.remove('material_uuid');
+    }
 
-    final bool uuidsChanged =
-        brandUuid != this.brandUuid ||
-        materialUuid != this.materialUuid ||
-        packageUuid != this.packageUuid;
+    if (packageUuid != null && materialName != null && brandName != null) {
+      json.remove('package_uuid');
+    }
 
-    final Map<String, dynamic> json = uuidsChanged
-        ? copyWith(
-            brandUuid: brandUuid,
-            materialUuid: materialUuid,
-            packageUuid: packageUuid,
-          ).toJson()
-        : _$OpenPrintTagMainDataToJson(this);
-
-    if (unknownFields != null && unknownFields!.isNotEmpty) {
+    if (unknownFields?.isNotEmpty ?? false) {
       json['unknown_fields'] = unknownFields;
     }
 
