@@ -51,4 +51,17 @@ class OpenPrintTagUuidGenerator {
           <int>[...Uuid.parseAsByteList(brandUuid), ...nfcUidBytes],
         )
       : null;
+
+  static String? buildBrandSpecificInstanceUuid(
+    String? brandUuid,
+    String? brandSpecificInstanceId,
+  ) => brandUuid != null && brandSpecificInstanceId != null
+      ? _uuidV5FromBytes(
+          OpenPrintTagConstants.uuidNamespaceBrandSpecificInstanceId.toString(),
+          <int>[
+            ...Uuid.parseAsByteList(brandUuid),
+            ...utf8.encode(brandSpecificInstanceId),
+          ],
+        )
+      : null;
 }

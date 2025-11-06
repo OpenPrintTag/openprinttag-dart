@@ -15,4 +15,7 @@ class OpenPrintTagConstants {
   static const UuidValue uuidNamespaceInstance = UuidValue.raw(
     '31062f81-b5bd-4f86-a5f8-46367e841508',
   );
+  static const UuidValue uuidNamespaceBrandSpecificInstanceId = UuidValue.raw(
+    '2d9f5f88-1d02-44c5-8c66-754479453743',
+  );
 }
