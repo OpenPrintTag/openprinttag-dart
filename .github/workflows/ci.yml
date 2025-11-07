@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          submodules: true
 
       - name: Setup Dart
         uses: dart-lang/setup-dart@v1
@@ -21,6 +23,11 @@ jobs:
 
       - name: Get dependencies
         run: dart pub get
+
+      - name: Check generated files are up-to-date
+        run: |
+          dart run build_runner build --delete-conflicting-outputs
+          git diff --exit-code lib/src/data/*.g.dart || (echo "Run 'make update-data'" && exit 1)
 
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed .

@@ -54,6 +54,18 @@ MIME type: `application/vnd.openprinttag` (available as `OpenPrintTagConstants.m
 
 Common tag sizes: NTAG213 = 320 bytes, NTAG215 = 888 bytes, NTAG216 = 1904 bytes
 
+## Development
+
+### Updating Data Definitions
+
+This library uses a Git submodule to track data definitions (field schemas, enums) from the upstream [OpenPrintTag repository](https://github.com/prusa3d/OpenPrintTag).
+
+To update to the latest definitions:
+
+```bash
+make update-data
+```
+
 ## Links
 
 - [OpenPrintTag (Python)](https://github.com/prusa3d/OpenPrintTag) - Original implementation

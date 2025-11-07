@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.7
+
+### Added
+- **Makefile**: Added `make update-data` command for easy submodule updates
+- **CI check**: Automated validation of generated files freshness
+- **Development docs**: Added instructions for maintaining data definitions
+
 ## 0.0.6
 
 ### Changed
