@@ -45,9 +45,7 @@ class OpenPrintTagDecoder {
     return OpenPrintTagData(
       meta: OpenPrintTagMetaData.fromJson(metaData),
       main: OpenPrintTagMainData.fromJson(mainData),
-      aux: auxData != null && auxData.isNotEmpty
-          ? OpenPrintTagAuxData.fromJson(auxData)
-          : null,
+      aux: auxData != null ? OpenPrintTagAuxData.fromJson(auxData) : null,
     );
   }
 
