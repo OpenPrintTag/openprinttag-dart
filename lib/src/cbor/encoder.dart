@@ -37,7 +37,7 @@ class OpenPrintTagEncoder {
     final Uint8List mainBytes = _encodeSection(
       data.main!.toJson(),
       mainFields,
-      indefinite: true,
+      indefinite: false,
     );
 
     final Uint8List auxBytes = _encodeSection(

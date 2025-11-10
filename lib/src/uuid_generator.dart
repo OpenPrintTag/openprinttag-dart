@@ -18,50 +18,58 @@ class OpenPrintTagUuidGenerator {
     return Uuid.unparse(hashBytes.sublist(0, 16));
   }
 
-  static String? buildBrandUuid(String? brandName) => brandName != null
-      ? _uuid.v5(OpenPrintTagConstants.uuidNamespaceBrand.toString(), brandName)
-      : null;
+  static String? _buildUuidFromString(String namespace, String? value) {
+    return value != null ? _uuid.v5(namespace, value) : null;
+  }
+
+  static String? _buildUuidWithBrandPrefix(
+    String namespace,
+    String? brandUuid,
+    List<int>? data,
+  ) {
+    if (brandUuid == null || data == null || data.isEmpty) {
+      return null;
+    }
+    return _uuidV5FromBytes(namespace, <int>[
+      ...Uuid.parseAsByteList(brandUuid),
+      ...data,
+    ]);
+  }
+
+  static String? buildBrandUuid(String? brandName) => _buildUuidFromString(
+    OpenPrintTagConstants.uuidNamespaceBrand.toString(),
+    brandName,
+  );
 
   static String? buildMaterialUuid(String? brandUuid, String? materialName) =>
-      brandUuid != null && materialName != null
-      ? _uuidV5FromBytes(
-          OpenPrintTagConstants.uuidNamespaceMaterial.toString(),
-          <int>[
-            ...Uuid.parseAsByteList(brandUuid),
-            ...utf8.encode(materialName),
-          ],
-        )
-      : null;
+      _buildUuidWithBrandPrefix(
+        OpenPrintTagConstants.uuidNamespaceMaterial.toString(),
+        brandUuid,
+        materialName != null ? utf8.encode(materialName) : null,
+      );
 
   static String? buildPackageUuid(String? brandUuid, num? gtin) =>
-      brandUuid != null && gtin != null
-      ? _uuidV5FromBytes(
-          OpenPrintTagConstants.uuidNamespacePackage.toString(),
-          <int>[
-            ...Uuid.parseAsByteList(brandUuid),
-            ...utf8.encode(gtin.toString()),
-          ],
-        )
-      : null;
+      _buildUuidWithBrandPrefix(
+        OpenPrintTagConstants.uuidNamespacePackage.toString(),
+        brandUuid,
+        gtin != null ? utf8.encode(gtin.toString()) : null,
+      );
 
   static String? buildInstanceUuid(String? brandUuid, List<int> nfcUidBytes) =>
-      brandUuid != null
-      ? _uuidV5FromBytes(
-          OpenPrintTagConstants.uuidNamespaceInstance.toString(),
-          <int>[...Uuid.parseAsByteList(brandUuid), ...nfcUidBytes],
-        )
-      : null;
+      _buildUuidWithBrandPrefix(
+        OpenPrintTagConstants.uuidNamespaceInstance.toString(),
+        brandUuid,
+        nfcUidBytes,
+      );
 
   static String? buildBrandSpecificInstanceUuid(
     String? brandUuid,
     String? brandSpecificInstanceId,
-  ) => brandUuid != null && brandSpecificInstanceId != null
-      ? _uuidV5FromBytes(
-          OpenPrintTagConstants.uuidNamespaceBrandSpecificInstanceId.toString(),
-          <int>[
-            ...Uuid.parseAsByteList(brandUuid),
-            ...utf8.encode(brandSpecificInstanceId),
-          ],
-        )
-      : null;
+  ) => _buildUuidWithBrandPrefix(
+    OpenPrintTagConstants.uuidNamespaceBrandSpecificInstanceId.toString(),
+    brandUuid,
+    brandSpecificInstanceId != null
+        ? utf8.encode(brandSpecificInstanceId)
+        : null,
+  );
 }

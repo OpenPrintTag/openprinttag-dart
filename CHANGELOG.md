@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.9
+
+### Added
+- **`newInstanceUuid()` method**: Generate new instance UUID for `OpenPrintTagData`
+
+### Changed
+- **UUID generator refactoring**: Simplified code structure with shared helper methods
+
 ## 0.0.8
 
 ### Changed

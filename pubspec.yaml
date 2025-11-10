@@ -1,7 +1,7 @@
 name: open_print_tag
 description: Encode and decode OpenPrintTag data to/from CBOR. Stores material
   info like type, temperatures, brand, and more.
-version: 0.0.8
+version: 0.0.9
 repository: https://github.com/prusa3d/OpenPrintTag-dart
 environment:
   sdk: ^3.9.2
