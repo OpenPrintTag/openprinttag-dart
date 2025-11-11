@@ -1,3 +1,4 @@
+import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:open_print_tag/models/open_print_tag_aux_data.dart';
 import 'package:open_print_tag/models/open_print_tag_main_data.dart';
@@ -7,6 +8,7 @@ import 'package:uuid/uuid.dart';
 
 part 'open_print_tag_data.g.dart';
 
+@CopyWith()
 @JsonSerializable(explicitToJson: true)
 class OpenPrintTagData {
   final OpenPrintTagMainData? main;

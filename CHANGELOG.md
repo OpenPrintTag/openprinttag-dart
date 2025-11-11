@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.0.10
+
+### Added
+- **CopyWith extension**: `OpenPrintTagData` now supports `copyWith()` method
+- **Tag categories**: Tags now include category and display name metadata
+
+### Changed
+- **Data submodule update**: Updated to latest OpenPrintTag data definitions
+
 ## 0.0.9
 
 ### Added
