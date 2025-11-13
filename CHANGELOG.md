@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.12
+
+### Added
+- **Tests**: Schema vs model sync tests to ensure all fields from generated schemas are present in models (MAIN, AUX, META)
+
+### Docs
+- **README**: Removed confusing note about “Common tag sizes” for NTAG21x
+
 ## 0.0.11
 
 ### Added

@@ -6,7 +6,7 @@ Dart/Flutter library for encoding and decoding OpenPrintTag data on NFC tags. Ba
 
 ```yaml
 dependencies:
-  open_print_tag: ^0.0.1
+  open_print_tag: ^0.0.12
 ```
 
 ## Usage
@@ -40,8 +40,6 @@ print('Material: ${decoded.main?.materialName}');
 The library handles OpenPrintTag CBOR encoding. You'll need an NDEF library to actually read/write NFC tags.
 
 MIME type: `application/vnd.openprinttag` (available as `OpenPrintTagConstants.mimeType`)
-
-Common tag sizes: NTAG213 = 320 bytes, NTAG215 = 888 bytes, NTAG216 = 1904 bytes
 
 ## Development
 
