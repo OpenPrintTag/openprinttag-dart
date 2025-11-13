@@ -57,6 +57,9 @@ class OpenPrintTagMainData {
   @JsonKey(name: 'manufactured_date')
   final int? manufacturedDate;
 
+  @JsonKey(name: 'country_of_origin')
+  final String? countryOfOrigin;
+
   @JsonKey(name: 'expiration_date')
   final int? expirationDate;
 
@@ -215,6 +218,7 @@ class OpenPrintTagMainData {
     this.brandName,
     this.writeProtection,
     this.manufacturedDate,
+    this.countryOfOrigin,
     this.expirationDate,
     this.nominalNettoFullWeight,
     this.actualNettoFullWeight,

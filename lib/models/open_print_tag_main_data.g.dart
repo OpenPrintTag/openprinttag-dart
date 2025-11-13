@@ -37,6 +37,8 @@ abstract class _$OpenPrintTagMainDataCWProxy {
 
   OpenPrintTagMainData manufacturedDate(int? manufacturedDate);
 
+  OpenPrintTagMainData countryOfOrigin(String? countryOfOrigin);
+
   OpenPrintTagMainData expirationDate(int? expirationDate);
 
   OpenPrintTagMainData nominalNettoFullWeight(num? nominalNettoFullWeight);
@@ -138,6 +140,7 @@ abstract class _$OpenPrintTagMainDataCWProxy {
     String? brandName,
     String? writeProtection,
     int? manufacturedDate,
+    String? countryOfOrigin,
     int? expirationDate,
     num? nominalNettoFullWeight,
     num? actualNettoFullWeight,
@@ -247,6 +250,10 @@ class _$OpenPrintTagMainDataCWProxyImpl
   @override
   OpenPrintTagMainData manufacturedDate(int? manufacturedDate) =>
       call(manufacturedDate: manufacturedDate);
+
+  @override
+  OpenPrintTagMainData countryOfOrigin(String? countryOfOrigin) =>
+      call(countryOfOrigin: countryOfOrigin);
 
   @override
   OpenPrintTagMainData expirationDate(int? expirationDate) =>
@@ -423,6 +430,7 @@ class _$OpenPrintTagMainDataCWProxyImpl
     Object? brandName = const $CopyWithPlaceholder(),
     Object? writeProtection = const $CopyWithPlaceholder(),
     Object? manufacturedDate = const $CopyWithPlaceholder(),
+    Object? countryOfOrigin = const $CopyWithPlaceholder(),
     Object? expirationDate = const $CopyWithPlaceholder(),
     Object? nominalNettoFullWeight = const $CopyWithPlaceholder(),
     Object? actualNettoFullWeight = const $CopyWithPlaceholder(),
@@ -526,6 +534,10 @@ class _$OpenPrintTagMainDataCWProxyImpl
           ? _value.manufacturedDate
           // ignore: cast_nullable_to_non_nullable
           : manufacturedDate as int?,
+      countryOfOrigin: countryOfOrigin == const $CopyWithPlaceholder()
+          ? _value.countryOfOrigin
+          // ignore: cast_nullable_to_non_nullable
+          : countryOfOrigin as String?,
       expirationDate: expirationDate == const $CopyWithPlaceholder()
           ? _value.expirationDate
           // ignore: cast_nullable_to_non_nullable
@@ -720,6 +732,7 @@ OpenPrintTagMainData _$OpenPrintTagMainDataFromJson(
   brandName: json['brand_name'] as String?,
   writeProtection: json['write_protection'] as String?,
   manufacturedDate: (json['manufactured_date'] as num?)?.toInt(),
+  countryOfOrigin: json['country_of_origin'] as String?,
   expirationDate: (json['expiration_date'] as num?)?.toInt(),
   nominalNettoFullWeight: json['nominal_netto_full_weight'] as num?,
   actualNettoFullWeight: json['actual_netto_full_weight'] as num?,
@@ -787,6 +800,7 @@ Map<String, dynamic> _$OpenPrintTagMainDataToJson(
   'brand_name': instance.brandName,
   'write_protection': instance.writeProtection,
   'manufactured_date': instance.manufacturedDate,
+  'country_of_origin': instance.countryOfOrigin,
   'expiration_date': instance.expirationDate,
   'nominal_netto_full_weight': instance.nominalNettoFullWeight,
   'actual_netto_full_weight': instance.actualNettoFullWeight,

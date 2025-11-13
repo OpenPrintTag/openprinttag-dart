@@ -32,6 +32,7 @@ const List<Map<String, Object?>> mainFields = const [
     'required': true,
     'example': 'FFF',
     'items_file': 'material_class_enum.yaml',
+    'display_name_field': 'description',
   },
   {
     'key': 9,
@@ -40,6 +41,7 @@ const List<Map<String, Object?>> mainFields = const [
     'category': 'fff',
     'items_file': 'material_type_enum.yaml',
     'name_field': 'abbreviation',
+    'display_name_field': 'name',
     'required': 'recommended',
     'example': 'PC',
   },
@@ -79,6 +81,7 @@ const List<Map<String, Object?>> mainFields = const [
     'type': 'timestamp',
     'required': 'recommended',
   },
+  {'key': 55, 'name': 'country_of_origin', 'type': 'string', 'max_length': 2},
   {'key': 15, 'name': 'expiration_date', 'type': 'timestamp'},
   {
     'key': 16,

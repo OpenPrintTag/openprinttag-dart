@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.0.11
+
+### Added
+- **Main data**: New `country_of_origin` field (2-letter country code)
+
+### Changed
+- **Data submodule update**: Updated to latest OpenPrintTag data definitions
+- **Generated data**: Regenerated `lib/src/data/main_fields.data.g.dart`
+- **Model**: Updated `OpenPrintTagMainData` to include `country_of_origin`
+
 ## 0.0.10
 
 ### Added
