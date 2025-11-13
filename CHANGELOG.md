@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.13
+
+### Added
+- **Tests**: Added coverage for handling and preserving unknown fields in `FieldsManager` (decode collects unknown CBOR keys into `unknown_fields`; encode merges them back).
+- **NDEF binary tests**: Extended suite to include `03_data.bin` fixture and verified round-trip encoding preserves unknown fields.
+
 ## 0.0.12
 
 ### Added
