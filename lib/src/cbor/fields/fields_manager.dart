@@ -48,14 +48,12 @@ class FieldsManager {
       ),
 
       FieldType.enumeration => () {
-        final String itemsFile = config['items_file'] as String;
-
-        // Get enum data directly from enum classes
-        final Map<int, String>? itemsByKey = _getEnumItemsFromClass(itemsFile);
+        // Get enum data directly from enum classes based on field name
+        final Map<int, String>? itemsByKey = _getEnumItemsFromClass(name);
 
         if (itemsByKey == null) {
           throw ArgumentError(
-            'Unknown enum file: $itemsFile. Add it to _getEnumItemsFromClass.',
+            'Unknown enum field: $name. Add it to _getEnumItemsFromClass.',
           );
         }
 
@@ -68,14 +66,12 @@ class FieldsManager {
       }(),
 
       FieldType.enumArray => () {
-        final String itemsFile = config['items_file'] as String;
-
-        // Get enum data directly from enum classes
-        final Map<int, String>? itemsByKey = _getEnumItemsFromClass(itemsFile);
+        // Get enum data directly from enum classes based on field name
+        final Map<int, String>? itemsByKey = _getEnumItemsFromClass(name);
 
         if (itemsByKey == null) {
           throw ArgumentError(
-            'Unknown enum file: $itemsFile. Add it to _getEnumItemsFromClass.',
+            'Unknown enum field: $name. Add it to _getEnumItemsFromClass.',
           );
         }
 
@@ -98,24 +94,24 @@ class FieldsManager {
     };
   }
 
-  static Map<int, String>? _getEnumItemsFromClass(String itemsFile) {
-    switch (itemsFile) {
-      case 'material_class_enum.yaml':
+  static Map<int, String>? _getEnumItemsFromClass(String fieldName) {
+    switch (fieldName) {
+      case 'material_class':
         return <int, String>{
           for (final MaterialClassEnum value in MaterialClassEnum.values)
             value.key: (value as Enum).name, // 'FFF', 'SLA'
         };
-      case 'material_type_enum.yaml':
+      case 'material_type':
         return <int, String>{
           for (final MaterialTypeEnum value in MaterialTypeEnum.values)
             value.key: (value as Enum).name, // 'PLA', 'PETG', etc.
         };
-      case 'tags_enum.yaml':
+      case 'tags':
         return <int, String>{
           for (final TagsEnum value in TagsEnum.values)
             value.key: (value as Enum).name, // 'filtration_recommended', etc.
         };
-      case 'write_protection_enum.yaml':
+      case 'write_protection':
         return <int, String>{
           for (final WriteProtectionEnum value in WriteProtectionEnum.values)
             value.key: (value as Enum).name, // 'no', 'irreversible', etc.
