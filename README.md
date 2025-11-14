@@ -6,7 +6,7 @@ Dart/Flutter library for encoding and decoding OpenPrintTag data on NFC tags. Ba
 
 ```yaml
 dependencies:
-  open_print_tag: ^0.0.12
+  open_print_tag: ^0.1.0
 ```
 
 ## Usage
@@ -20,8 +20,8 @@ final parser = OpenPrintTagParser.create();
 // Write data
 final data = OpenPrintTagData(
   main: OpenPrintTagMainData(
-    materialClass: 'FFF',
-    materialType: 'PLA',
+    materialClass: MaterialClassEnum.FFF,
+    materialType: MaterialTypeEnum.PLA,
     materialName: 'My PLA',
     minPrintTemperature: 200,
     minBedTemperature: 60,

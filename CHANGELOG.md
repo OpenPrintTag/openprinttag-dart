@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.1.0
+
+### Breaking Changes
+- **Enums refactored to native Dart enums**: All enums (`MaterialClassEnum`, `MaterialTypeEnum`, `TagsEnum`, `TagCategoriesEnum`, `WriteProtectionEnum`) are now proper Dart enums instead of maps
+  - Previously: `Map<int, String>` in `lib/src/data/*.data.g.dart`
+  - Now: `enum MaterialClassEnum` in `lib/src/enums/*.enum.g.dart`
+  - Enums have `key` property and static `byKey(int)` method
+  - Some enums have additional properties: `name`, `category`
+  - Access via `MaterialClassEnum.FFF.key` instead of map lookup
+
+### Added
+- **Dart enum generator**: New `yaml_enum_builder` generates native Dart enums from YAML definitions
+- **Enum utilities**: Shared utilities in `yaml_builder_utils.dart` for enum generation
+- **Enum barrel file**: All enums exported via `lib/src/enums/enums.dart`
+
+### Changed
+- **FieldsManager simplified**: No longer requires `enumsData` parameter, uses enum classes directly
+- **Enum location**: Moved from `lib/src/data/` to `lib/src/enums/`
+- **Build configuration**: Updated `build.yaml` for new enum generator
+- **Tests updated**: All tests adapted to use new enum structure
+
 ## 0.0.13
 
 ### Added
