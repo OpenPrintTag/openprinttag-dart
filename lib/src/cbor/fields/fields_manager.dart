@@ -1,7 +1,6 @@
 import 'package:cbor/cbor.dart';
 import 'package:open_print_tag/src/cbor/fields/field_types.dart';
 import 'package:open_print_tag/src/enums/enums.dart';
-import 'package:open_print_tag/src/enums/material_certifications_enum.enum.g.dart';
 
 typedef AssetLoader = Future<String> Function(String assetPath);
 
