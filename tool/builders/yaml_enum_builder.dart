@@ -12,6 +12,7 @@ const Set<String> _enumBasenames = <String>{
   'write_protection_enum',
   'material_type_enum',
   'material_class_enum',
+  'material_certifications_enum',
 };
 
 const Set<String> _enumExcludedKeys = <String>{'description'};
@@ -21,22 +22,11 @@ Builder yamlEnumBuilder([BuilderOptions? _]) => _YamlEnumBuilder();
 
 class _YamlEnumBuilder implements Builder {
   @override
-  Map<String, List<String>> get buildExtensions => const <String, List<String>>{
-    'data-submodule/data/material_class_enum.yaml': <String>[
-      'lib/src/enums/material_class_enum.enum.g.dart',
-    ],
-    'data-submodule/data/material_type_enum.yaml': <String>[
-      'lib/src/enums/material_type_enum.enum.g.dart',
-    ],
-    'data-submodule/data/tag_categories_enum.yaml': <String>[
-      'lib/src/enums/tag_categories_enum.enum.g.dart',
-    ],
-    'data-submodule/data/tags_enum.yaml': <String>[
-      'lib/src/enums/tags_enum.enum.g.dart',
-    ],
-    'data-submodule/data/write_protection_enum.yaml': <String>[
-      'lib/src/enums/write_protection_enum.enum.g.dart',
-    ],
+  Map<String, List<String>> get buildExtensions => <String, List<String>>{
+    for (final String basename in _enumBasenames)
+      'data-submodule/data/$basename.yaml': <String>[
+        'lib/src/enums/$basename.enum.g.dart',
+      ],
   };
 
   @override

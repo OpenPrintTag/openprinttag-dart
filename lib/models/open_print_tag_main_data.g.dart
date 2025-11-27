@@ -67,6 +67,10 @@ abstract class _$OpenPrintTagMainDataCWProxy {
 
   OpenPrintTagMainData tags(List<TagsEnum>? tags);
 
+  OpenPrintTagMainData certifications(
+    List<MaterialCertificationsEnum>? certifications,
+  );
+
   OpenPrintTagMainData density(num? density);
 
   OpenPrintTagMainData filamentDiameter(num? filamentDiameter);
@@ -155,6 +159,7 @@ abstract class _$OpenPrintTagMainDataCWProxy {
     Uint8List? secondaryColor4,
     num? transmissionDistance,
     List<TagsEnum>? tags,
+    List<MaterialCertificationsEnum>? certifications,
     num? density,
     num? filamentDiameter,
     int? shoreHardnessA,
@@ -311,6 +316,11 @@ class _$OpenPrintTagMainDataCWProxyImpl
   OpenPrintTagMainData tags(List<TagsEnum>? tags) => call(tags: tags);
 
   @override
+  OpenPrintTagMainData certifications(
+    List<MaterialCertificationsEnum>? certifications,
+  ) => call(certifications: certifications);
+
+  @override
   OpenPrintTagMainData density(num? density) => call(density: density);
 
   @override
@@ -445,6 +455,7 @@ class _$OpenPrintTagMainDataCWProxyImpl
     Object? secondaryColor4 = const $CopyWithPlaceholder(),
     Object? transmissionDistance = const $CopyWithPlaceholder(),
     Object? tags = const $CopyWithPlaceholder(),
+    Object? certifications = const $CopyWithPlaceholder(),
     Object? density = const $CopyWithPlaceholder(),
     Object? filamentDiameter = const $CopyWithPlaceholder(),
     Object? shoreHardnessA = const $CopyWithPlaceholder(),
@@ -596,6 +607,10 @@ class _$OpenPrintTagMainDataCWProxyImpl
           ? _value.tags
           // ignore: cast_nullable_to_non_nullable
           : tags as List<TagsEnum>?,
+      certifications: certifications == const $CopyWithPlaceholder()
+          ? _value.certifications
+          // ignore: cast_nullable_to_non_nullable
+          : certifications as List<MaterialCertificationsEnum>?,
       density: density == const $CopyWithPlaceholder()
           ? _value.density
           // ignore: cast_nullable_to_non_nullable
@@ -768,6 +783,9 @@ OpenPrintTagMainData _$OpenPrintTagMainDataFromJson(
   tags: (json['tags'] as List<dynamic>?)
       ?.map((e) => $enumDecode(_$TagsEnumEnumMap, e))
       .toList(),
+  certifications: (json['certifications'] as List<dynamic>?)
+      ?.map((e) => $enumDecode(_$MaterialCertificationsEnumEnumMap, e))
+      .toList(),
   density: json['density'] as num?,
   filamentDiameter: json['filament_diameter'] as num?,
   shoreHardnessA: (json['shore_hardness_a'] as num?)?.toInt(),
@@ -836,6 +854,9 @@ Map<String, dynamic> _$OpenPrintTagMainDataToJson(
   ),
   'transmission_distance': instance.transmissionDistance,
   'tags': instance.tags?.map((e) => _$TagsEnumEnumMap[e]!).toList(),
+  'certifications': instance.certifications
+      ?.map((e) => _$MaterialCertificationsEnumEnumMap[e]!)
+      .toList(),
   'density': instance.density,
   'filament_diameter': instance.filamentDiameter,
   'shore_hardness_a': instance.shoreHardnessA,
@@ -986,4 +1007,9 @@ const _$TagsEnumEnumMap = {
   TagsEnum.lithophane: 'lithophane',
   TagsEnum.recycled: 'recycled',
   TagsEnum.limited_edition: 'limited_edition',
+};
+
+const _$MaterialCertificationsEnumEnumMap = {
+  MaterialCertificationsEnum.ul_2818: 'ul_2818',
+  MaterialCertificationsEnum.ul_94_v0: 'ul_94_v0',
 };

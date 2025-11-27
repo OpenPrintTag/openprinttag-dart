@@ -16,6 +16,7 @@ targets:
         generate_for:
           - data-submodule/data/material_class_enum.yaml
           - data-submodule/data/material_type_enum.yaml
+          - data-submodule/data/material_certifications_enum.yaml
           - data-submodule/data/tag_categories_enum.yaml
           - data-submodule/data/tags_enum.yaml
           - data-submodule/data/write_protection_enum.yaml
@@ -41,6 +42,7 @@ builders:
       ^data-submodule/data/tag_categories_enum.yaml: ["lib/src/enums/tag_categories_enum.enum.g.dart"]
       ^data-submodule/data/tags_enum.yaml: ["lib/src/enums/tags_enum.enum.g.dart"]
       ^data-submodule/data/write_protection_enum.yaml: ["lib/src/enums/write_protection_enum.enum.g.dart"]
+      ^data-submodule/data/material_certifications_enum.yaml: ["lib/src/enums/material_certifications_enum.enum.g.dart"]
     auto_apply: root_package
     build_to: source
     runs_before: ["json_serializable"]

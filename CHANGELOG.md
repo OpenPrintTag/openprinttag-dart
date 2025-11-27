@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.1
+
+### Added
+- **Material certifications**: New `MaterialCertificationsEnum` enum with `UL 2818` and `UL 94 V0` certifications
+- **Certifications field**: New `certifications` field in `OpenPrintTagMainData` for storing material certifications
+
+### Changed
+- **Color field type**: Colors (`primary_color`, `secondary_color_*`) now use dedicated `color_rgba` field type instead of generic `bytes`
+- **Builder refactoring**: Simplified `yaml_enum_builder.dart` with dynamic loop instead of hardcoded mappings
+- **Data submodule update**: Updated to latest OpenPrintTag data definitions
+
 ## 0.1.0
 
 ### Breaking Changes

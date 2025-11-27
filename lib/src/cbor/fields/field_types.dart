@@ -12,6 +12,7 @@ enum FieldType {
   string('string'),
   enumeration('enum'),
   enumArray('enum_array'),
+  colorRgba('color_rgba'),
   bytes('bytes'),
   uuid('uuid'),
   timestamp('timestamp');
@@ -218,6 +219,15 @@ class EnumArrayField extends EnumFieldBase {
 
     return CborList(keys.map((int k) => CborSmallInt(k)).toList());
   }
+}
+
+class ColorRgbaField extends BytesField {
+  ColorRgbaField({
+    required super.key,
+    required super.name,
+    super.maxLength = 4,
+    super.required,
+  });
 }
 
 class BytesField extends Field {

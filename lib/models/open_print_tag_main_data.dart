@@ -129,6 +129,8 @@ class OpenPrintTagMainData {
 
   final List<TagsEnum>? tags;
 
+  final List<MaterialCertificationsEnum>? certifications;
+
   final num? density;
 
   // FFF-specific properties
@@ -234,6 +236,7 @@ class OpenPrintTagMainData {
     this.secondaryColor4,
     this.transmissionDistance,
     this.tags,
+    this.certifications,
     this.density,
     this.filamentDiameter,
     this.shoreHardnessA,

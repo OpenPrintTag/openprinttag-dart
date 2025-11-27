@@ -1,6 +1,7 @@
 import 'package:cbor/cbor.dart';
 import 'package:open_print_tag/src/cbor/fields/field_types.dart';
 import 'package:open_print_tag/src/enums/enums.dart';
+import 'package:open_print_tag/src/enums/material_certifications_enum.enum.g.dart';
 
 typedef AssetLoader = Future<String> Function(String assetPath);
 
@@ -83,6 +84,12 @@ class FieldsManager {
         );
       }(),
 
+      FieldType.colorRgba => ColorRgbaField(
+        key: key,
+        name: name,
+        required: required,
+      ),
+
       FieldType.bytes => BytesField(
         key: key,
         name: name,
@@ -115,6 +122,12 @@ class FieldsManager {
         return <int, String>{
           for (final WriteProtectionEnum value in WriteProtectionEnum.values)
             value.key: (value as Enum).name, // 'no', 'irreversible', etc.
+        };
+      case 'certifications':
+        return <int, String>{
+          for (final MaterialCertificationsEnum value
+              in MaterialCertificationsEnum.values)
+            value.key: (value as Enum).name, // 'ul_2818', 'ul_94_v0', etc.
         };
       default:
         return null;
