@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.2
+
+### Added
+- **Enum array max length validation**: `EnumArrayField` now validates that the number of items doesn't exceed `max_length` constraint (tags max 16, certifications max 8)
+- **New test fixture**: Added `04_data.bin` for additional binary parsing tests
+
+### Changed
+- **Data submodule update**: Updated to latest OpenPrintTag data definitions with `max_length` support for enum arrays
+
 ## 0.1.1
 
 ### Added

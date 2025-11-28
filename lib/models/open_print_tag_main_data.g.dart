@@ -928,6 +928,7 @@ const _$MaterialTypeEnumEnumMap = {
   MaterialTypeEnum.PSU: 'PSU',
   MaterialTypeEnum.TPI: 'TPI',
   MaterialTypeEnum.SBS: 'SBS',
+  MaterialTypeEnum.OBC: 'OBC',
 };
 
 const _$WriteProtectionEnumEnumMap = {

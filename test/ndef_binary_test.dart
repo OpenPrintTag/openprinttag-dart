@@ -27,6 +27,10 @@ void main() {
       await _testBinaryFile('test/fixtures/03_data.bin', parser);
     });
 
+    test('loads and parses 04_data.bin', () async {
+      await _testBinaryFile('test/fixtures/04_data.bin', parser);
+    });
+
     test('loads and parses unknown_data_1.bin', () async {
       await _testBinaryFile('test/fixtures/unknown_data_1.bin', parser);
     });

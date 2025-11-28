@@ -106,7 +106,8 @@ enum MaterialTypeEnum {
     key: 39,
     name: 'Styrene-Butadiene-Styrene',
     category: MaterialClassEnum.FFF,
-  );
+  ),
+  OBC(key: 40, name: 'Olefin Block Copolymer', category: MaterialClassEnum.FFF);
 
   final int key;
   final String name;

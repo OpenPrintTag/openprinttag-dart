@@ -79,6 +79,7 @@ class FieldsManager {
           key: key,
           name: name,
           itemsByKey: itemsByKey,
+          maxLength: config['max_length'] as int,
           required: required,
         );
       }(),

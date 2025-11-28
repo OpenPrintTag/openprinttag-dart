@@ -211,6 +211,7 @@ void main() {
         key: 5,
         name: 'tags',
         itemsByKey: tagItems,
+        maxLength: 16,
       );
 
       final CborValue encoded = field.encode(<String>[
@@ -230,6 +231,7 @@ void main() {
         key: 5,
         name: 'tags',
         itemsByKey: tagItems,
+        maxLength: 16,
       );
 
       expect(
@@ -250,6 +252,7 @@ void main() {
         key: 5,
         name: 'tags',
         itemsByKey: tagItems,
+        maxLength: 16,
       );
 
       expect(
@@ -269,10 +272,32 @@ void main() {
         key: 5,
         name: 'tags',
         itemsByKey: tagItems,
+        maxLength: 16,
       );
 
       final List<String> tags = <String>['TRANSLUCENT', 'FLEXIBLE', 'SUPPORT'];
       expect(field.decode(field.encode(tags)), equals(tags));
+    });
+
+    test('validates maxLength constraint', () {
+      final EnumArrayField field = EnumArrayField(
+        key: 5,
+        name: 'tags',
+        itemsByKey: tagItems,
+        maxLength: 2,
+      );
+
+      // Should pass with 2 items
+      expect(
+        () => field.encode(<String>['FLEXIBLE', 'SUPPORT']),
+        returnsNormally,
+      );
+
+      // Should fail with 3 items
+      expect(
+        () => field.encode(<String>['FLEXIBLE', 'SUPPORT', 'TRANSLUCENT']),
+        throwsArgumentError,
+      );
     });
   });
 

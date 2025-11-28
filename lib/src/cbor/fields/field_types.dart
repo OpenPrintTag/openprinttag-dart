@@ -195,10 +195,13 @@ class EnumField extends EnumFieldBase {
 }
 
 class EnumArrayField extends EnumFieldBase {
+  final int maxLength;
+
   EnumArrayField({
     required super.key,
     required super.name,
     required super.itemsByKey,
+    required this.maxLength,
     super.required,
   }) : super(type: FieldType.enumArray);
 
@@ -216,6 +219,13 @@ class EnumArrayField extends EnumFieldBase {
     final List<int> keys = (data as List<dynamic>).map((dynamic item) {
       return valueToKey(item as String);
     }).toList();
+
+    if (keys.length > maxLength) {
+      throw ArgumentError(
+        'Enum array for field $name has ${keys.length} items, '
+        'but maximum is $maxLength',
+      );
+    }
 
     return CborList(keys.map((int k) => CborSmallInt(k)).toList());
   }
