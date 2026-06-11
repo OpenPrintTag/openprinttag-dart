@@ -89,6 +89,12 @@ class OpenPrintTagMainData {
   )
   final Uint8List? primaryColor;
 
+  @JsonKey(name: 'primary_color_lab')
+  final List<num>? primaryColorLab;
+
+  @JsonKey(name: 'primary_color_ral')
+  final String? primaryColorRal;
+
   @JsonKey(
     name: 'secondary_color_0',
     fromJson: _uint8ListFromJson,
@@ -233,6 +239,8 @@ class OpenPrintTagMainData {
     this.actualFullLength,
     this.emptyContainerWeight,
     this.primaryColor,
+    this.primaryColorLab,
+    this.primaryColorRal,
     this.secondaryColor0,
     this.secondaryColor1,
     this.secondaryColor2,

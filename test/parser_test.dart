@@ -116,6 +116,8 @@ void main() {
             minPrintTemperature: 240,
             minBedTemperature: 100,
             density: 1.04,
+            primaryColorLab: <num>[53.24, 111.12, -27.3],
+            primaryColorRal: '270 30 20',
           ),
         ),
       );
@@ -148,6 +150,19 @@ void main() {
         decodedPayload.data.main!.density,
         originalPayload.data.main!.density,
       );
+      for (int i = 0; i < 3; i++) {
+        expect(
+          (decodedPayload.data.main!.primaryColorLab![i] -
+                  originalPayload.data.main!.primaryColorLab![i])
+              .abs(),
+          lessThan(0.05),
+          reason: 'primary_color_lab not preserved at index $i',
+        );
+      }
+      expect(
+        decodedPayload.data.main!.primaryColorRal,
+        originalPayload.data.main!.primaryColorRal,
+      );
       expect(decodedPayload.data.meta, isNotNull);
     });
 
@@ -165,6 +180,9 @@ void main() {
           aux: OpenPrintTagAuxData(
             workgroup: 'TestGrp',
             consumedWeight: 123.45,
+            purchaseTime: 1747570939,
+            purchasePrice: 549,
+            purchaseCurrency: 'CZK',
           ),
         ),
       );
@@ -193,6 +211,18 @@ void main() {
       expect(
         decodedPayload.data.aux!.consumedWeight,
         originalPayload.data.aux!.consumedWeight,
+      );
+      expect(
+        decodedPayload.data.aux!.purchaseTime,
+        originalPayload.data.aux!.purchaseTime,
+      );
+      expect(
+        decodedPayload.data.aux!.purchasePrice,
+        originalPayload.data.aux!.purchasePrice,
+      );
+      expect(
+        decodedPayload.data.aux!.purchaseCurrency,
+        originalPayload.data.aux!.purchaseCurrency,
       );
       expect(decodedPayload.data.meta, isNotNull);
     });

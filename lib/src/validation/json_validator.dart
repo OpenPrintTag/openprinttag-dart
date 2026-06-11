@@ -225,6 +225,41 @@ class JsonValidator {
           }
         }
 
+      case FieldType.colorLab:
+        if (value is! List) {
+          return ValidationError(
+            field: field.name,
+            message: 'Expected [L*, a*, b*] list, got ${value.runtimeType}',
+            type: ValidationErrorType.invalidType,
+          );
+        }
+        if (value.length != 3) {
+          return ValidationError(
+            field: field.name,
+            message:
+                'color_lab must have exactly 3 values, got ${value.length}',
+            type: ValidationErrorType.invalidValue,
+          );
+        }
+        for (final dynamic item in value) {
+          if (item is! num) {
+            return ValidationError(
+              field: field.name,
+              message:
+                  'color_lab values must be numbers, got ${item.runtimeType}',
+              type: ValidationErrorType.invalidType,
+            );
+          }
+        }
+        final num l = value[0] as num;
+        if (l < 0 || l > 100) {
+          return ValidationError(
+            field: field.name,
+            message: 'L* must be in [0, 100], got $l',
+            type: ValidationErrorType.invalidValue,
+          );
+        }
+
       case FieldType.bytes:
         if (value is! String &&
             value is! Uint8List &&

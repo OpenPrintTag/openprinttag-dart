@@ -12,6 +12,7 @@ enum MaterialTypeEnum {
   PA6(key: 8, name: 'Polyamide 6'),
   PA11(key: 9, name: 'Polyamide 11'),
   PA12(key: 10, name: 'Polyamide 12'),
+  PA612(key: 42, name: 'Polyamide 612'),
   PA66(key: 11, name: 'Polyamide 66'),
   CPE(key: 12, name: 'Copolyester'),
   TPE(key: 13, name: 'Thermoplastic Elastomer'),

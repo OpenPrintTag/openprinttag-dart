@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.2.5
+
+### Added
+- **New aux fields**: Added `purchase_time`, `purchase_price` and `purchase_currency` to `OpenPrintTagAuxData` for customer-private purchase tracking (purchase timestamp, amount paid and ISO 4217 currency code; not filled by the manufacturer)
+- **New main fields**: Added `primary_color_lab` (CIELAB `[L*, a*, b*]` values) and `primary_color_ral` (RAL code string, max 16 chars) to `OpenPrintTagMainData`
+- **New field type**: Added `color_lab` field type with compact per-component number encoding and validation (`L*` range 0–100)
+- **New material type**: Added `PA612` (Polyamide 612) to `MaterialTypeEnum`
+
+### Changed
+- **Number encoding**: Extracted `CompactFloat` helper that picks the most compact CBOR representation (int → float16 → float32 → float64); decimals that don't fit float16/float32 are now encoded as float64 instead of throwing
+- **Dependencies update**: Updated all dependencies to latest versions
+  - `copy_with_extension`: ^14.0.0 → ^15.0.1
+  - `json_annotation`: ^4.11.0 → ^4.12.0
+  - `build`: ^4.0.4 → ^4.0.6
+  - `build_runner`: ^2.11.1 → ^2.15.0
+  - `copy_with_extension_gen`: ^14.0.0 → ^15.0.1
+  - `dart_style`: ^3.1.2 → ^3.1.9
+  - `json_serializable`: ^6.11.3 → ^6.14.0
+  - `lints`: ^6.0.0 → ^6.1.0
+  - `test`: ^1.26.3 → ^1.31.1
+- **Data submodule update**: Updated to latest OpenPrintTag data definitions
+
 ## 0.2.4
 
 ### Added

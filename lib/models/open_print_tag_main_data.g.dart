@@ -53,6 +53,10 @@ abstract class _$OpenPrintTagMainDataCWProxy {
 
   OpenPrintTagMainData primaryColor(Uint8List? primaryColor);
 
+  OpenPrintTagMainData primaryColorLab(List<num>? primaryColorLab);
+
+  OpenPrintTagMainData primaryColorRal(String? primaryColorRal);
+
   OpenPrintTagMainData secondaryColor0(Uint8List? secondaryColor0);
 
   OpenPrintTagMainData secondaryColor1(Uint8List? secondaryColor1);
@@ -154,6 +158,8 @@ abstract class _$OpenPrintTagMainDataCWProxy {
     num? actualFullLength,
     num? emptyContainerWeight,
     Uint8List? primaryColor,
+    List<num>? primaryColorLab,
+    String? primaryColorRal,
     Uint8List? secondaryColor0,
     Uint8List? secondaryColor1,
     Uint8List? secondaryColor2,
@@ -290,6 +296,14 @@ class _$OpenPrintTagMainDataCWProxyImpl
   @override
   OpenPrintTagMainData primaryColor(Uint8List? primaryColor) =>
       call(primaryColor: primaryColor);
+
+  @override
+  OpenPrintTagMainData primaryColorLab(List<num>? primaryColorLab) =>
+      call(primaryColorLab: primaryColorLab);
+
+  @override
+  OpenPrintTagMainData primaryColorRal(String? primaryColorRal) =>
+      call(primaryColorRal: primaryColorRal);
 
   @override
   OpenPrintTagMainData secondaryColor0(Uint8List? secondaryColor0) =>
@@ -455,6 +469,8 @@ class _$OpenPrintTagMainDataCWProxyImpl
     Object? actualFullLength = const $CopyWithPlaceholder(),
     Object? emptyContainerWeight = const $CopyWithPlaceholder(),
     Object? primaryColor = const $CopyWithPlaceholder(),
+    Object? primaryColorLab = const $CopyWithPlaceholder(),
+    Object? primaryColorRal = const $CopyWithPlaceholder(),
     Object? secondaryColor0 = const $CopyWithPlaceholder(),
     Object? secondaryColor1 = const $CopyWithPlaceholder(),
     Object? secondaryColor2 = const $CopyWithPlaceholder(),
@@ -587,6 +603,14 @@ class _$OpenPrintTagMainDataCWProxyImpl
           ? _value.primaryColor
           // ignore: cast_nullable_to_non_nullable
           : primaryColor as Uint8List?,
+      primaryColorLab: primaryColorLab == const $CopyWithPlaceholder()
+          ? _value.primaryColorLab
+          // ignore: cast_nullable_to_non_nullable
+          : primaryColorLab as List<num>?,
+      primaryColorRal: primaryColorRal == const $CopyWithPlaceholder()
+          ? _value.primaryColorRal
+          // ignore: cast_nullable_to_non_nullable
+          : primaryColorRal as String?,
       secondaryColor0: secondaryColor0 == const $CopyWithPlaceholder()
           ? _value.secondaryColor0
           // ignore: cast_nullable_to_non_nullable
@@ -776,6 +800,10 @@ OpenPrintTagMainData _$OpenPrintTagMainDataFromJson(
   actualFullLength: json['actual_full_length'] as num?,
   emptyContainerWeight: json['empty_container_weight'] as num?,
   primaryColor: OpenPrintTagMainData._uint8ListFromJson(json['primary_color']),
+  primaryColorLab: (json['primary_color_lab'] as List<dynamic>?)
+      ?.map((e) => e as num)
+      .toList(),
+  primaryColorRal: json['primary_color_ral'] as String?,
   secondaryColor0: OpenPrintTagMainData._uint8ListFromJson(
     json['secondary_color_0'],
   ),
@@ -851,6 +879,8 @@ Map<String, dynamic> _$OpenPrintTagMainDataToJson(
   'actual_full_length': instance.actualFullLength,
   'empty_container_weight': instance.emptyContainerWeight,
   'primary_color': OpenPrintTagMainData._uint8ListToJson(instance.primaryColor),
+  'primary_color_lab': instance.primaryColorLab,
+  'primary_color_ral': instance.primaryColorRal,
   'secondary_color_0': OpenPrintTagMainData._uint8ListToJson(
     instance.secondaryColor0,
   ),
@@ -915,6 +945,7 @@ const _$MaterialTypeEnumEnumMap = {
   MaterialTypeEnum.PA6: 'PA6',
   MaterialTypeEnum.PA11: 'PA11',
   MaterialTypeEnum.PA12: 'PA12',
+  MaterialTypeEnum.PA612: 'PA612',
   MaterialTypeEnum.PA66: 'PA66',
   MaterialTypeEnum.CPE: 'CPE',
   MaterialTypeEnum.TPE: 'TPE',

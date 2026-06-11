@@ -95,6 +95,12 @@ class FieldsManager {
         required: required,
       ),
 
+      FieldType.colorLab => ColorLabField(
+        key: key,
+        name: name,
+        required: required,
+      ),
+
       FieldType.bytes => BytesField(
         key: key,
         name: name,

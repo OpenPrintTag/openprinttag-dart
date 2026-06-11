@@ -17,6 +17,12 @@ abstract class _$OpenPrintTagAuxDataCWProxy {
 
   OpenPrintTagAuxData storageLocation(String? storageLocation);
 
+  OpenPrintTagAuxData purchaseTime(int? purchaseTime);
+
+  OpenPrintTagAuxData purchasePrice(num? purchasePrice);
+
+  OpenPrintTagAuxData purchaseCurrency(String? purchaseCurrency);
+
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `OpenPrintTagAuxData(...).copyWith.fieldName(value)`.
   ///
@@ -30,6 +36,9 @@ abstract class _$OpenPrintTagAuxDataCWProxy {
     String? generalPurposeRangeUser,
     int? lastStirTime,
     String? storageLocation,
+    int? purchaseTime,
+    num? purchasePrice,
+    String? purchaseCurrency,
   });
 }
 
@@ -62,6 +71,18 @@ class _$OpenPrintTagAuxDataCWProxyImpl implements _$OpenPrintTagAuxDataCWProxy {
       call(storageLocation: storageLocation);
 
   @override
+  OpenPrintTagAuxData purchaseTime(int? purchaseTime) =>
+      call(purchaseTime: purchaseTime);
+
+  @override
+  OpenPrintTagAuxData purchasePrice(num? purchasePrice) =>
+      call(purchasePrice: purchasePrice);
+
+  @override
+  OpenPrintTagAuxData purchaseCurrency(String? purchaseCurrency) =>
+      call(purchaseCurrency: purchaseCurrency);
+
+  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `OpenPrintTagAuxData(...).copyWith.fieldName(value)`.
   ///
@@ -75,6 +96,9 @@ class _$OpenPrintTagAuxDataCWProxyImpl implements _$OpenPrintTagAuxDataCWProxy {
     Object? generalPurposeRangeUser = const $CopyWithPlaceholder(),
     Object? lastStirTime = const $CopyWithPlaceholder(),
     Object? storageLocation = const $CopyWithPlaceholder(),
+    Object? purchaseTime = const $CopyWithPlaceholder(),
+    Object? purchasePrice = const $CopyWithPlaceholder(),
+    Object? purchaseCurrency = const $CopyWithPlaceholder(),
   }) {
     return OpenPrintTagAuxData(
       consumedWeight: consumedWeight == const $CopyWithPlaceholder()
@@ -98,6 +122,18 @@ class _$OpenPrintTagAuxDataCWProxyImpl implements _$OpenPrintTagAuxDataCWProxy {
           ? _value.storageLocation
           // ignore: cast_nullable_to_non_nullable
           : storageLocation as String?,
+      purchaseTime: purchaseTime == const $CopyWithPlaceholder()
+          ? _value.purchaseTime
+          // ignore: cast_nullable_to_non_nullable
+          : purchaseTime as int?,
+      purchasePrice: purchasePrice == const $CopyWithPlaceholder()
+          ? _value.purchasePrice
+          // ignore: cast_nullable_to_non_nullable
+          : purchasePrice as num?,
+      purchaseCurrency: purchaseCurrency == const $CopyWithPlaceholder()
+          ? _value.purchaseCurrency
+          // ignore: cast_nullable_to_non_nullable
+          : purchaseCurrency as String?,
     );
   }
 }
@@ -121,6 +157,9 @@ OpenPrintTagAuxData _$OpenPrintTagAuxDataFromJson(Map<String, dynamic> json) =>
       generalPurposeRangeUser: json['general_purpose_range_user'] as String?,
       lastStirTime: (json['last_stir_time'] as num?)?.toInt(),
       storageLocation: json['storage_location'] as String?,
+      purchaseTime: (json['purchase_time'] as num?)?.toInt(),
+      purchasePrice: json['purchase_price'] as num?,
+      purchaseCurrency: json['purchase_currency'] as String?,
     );
 
 Map<String, dynamic> _$OpenPrintTagAuxDataToJson(
@@ -131,4 +170,7 @@ Map<String, dynamic> _$OpenPrintTagAuxDataToJson(
   'general_purpose_range_user': instance.generalPurposeRangeUser,
   'last_stir_time': instance.lastStirTime,
   'storage_location': instance.storageLocation,
+  'purchase_time': instance.purchaseTime,
+  'purchase_price': instance.purchasePrice,
+  'purchase_currency': instance.purchaseCurrency,
 };

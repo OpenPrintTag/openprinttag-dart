@@ -19,4 +19,23 @@ const List<Map<String, Object?>> auxFields = const [
     'example': 'Shelf B3',
     'max_length': 8,
   },
+  {
+    'key': 5,
+    'name': 'purchase_time',
+    'type': 'timestamp',
+    'category': 'user_data',
+  },
+  {
+    'key': 6,
+    'name': 'purchase_price',
+    'type': 'number',
+    'category': 'user_data',
+  },
+  {
+    'key': 7,
+    'name': 'purchase_currency',
+    'type': 'string',
+    'max_length': 3,
+    'category': 'user_data',
+  },
 ];

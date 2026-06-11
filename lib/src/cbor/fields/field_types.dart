@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:cbor/cbor.dart';
-import 'package:ieee754/ieee754.dart';
 import 'package:open_print_tag/src/cbor/cbor_hex_utils.dart';
+import 'package:open_print_tag/src/cbor/compact_float.dart';
 import 'package:uuid/uuid.dart';
 
 enum FieldType {
@@ -14,6 +14,7 @@ enum FieldType {
   enumeration('enum'),
   enumArray('enum_array'),
   colorRgba('color_rgba'),
+  colorLab('color_lab'),
   bytes('bytes'),
   uuid('uuid'),
   timestamp('timestamp');
@@ -75,50 +76,10 @@ class NumberField extends Field {
     : super(type: FieldType.number);
 
   @override
-  num decode(CborValue data) {
-    final num value;
-    if (data is CborSmallInt) {
-      value = data.value;
-    } else if (data is CborFloat) {
-      value = data.value;
-    } else {
-      throw ArgumentError(
-        'Expected CborSmallInt or CborFloat, got ${data.runtimeType}',
-      );
-    }
-
-    if (value == value.toInt()) {
-      return value.toInt();
-    }
-    return (value * 1000).round() / 1000;
-  }
+  num decode(CborValue data) => CompactFloat.decode(data);
 
   @override
-  CborValue encode(dynamic data) {
-    final num value = (data as num).toDouble();
-
-    if (value == value.toInt()) {
-      return CborSmallInt(value.toInt());
-    }
-
-    final FloatParts floatParts = FloatParts.fromDouble(value.toDouble());
-
-    final double float16Value = FloatParts.fromFloat16Bytes(
-      floatParts.toFloat16Bytes(),
-    ).toDouble();
-    if ((value - float16Value).abs() < 1e-3) {
-      return CborFloat(float16Value);
-    }
-
-    final double float32Value = FloatParts.fromFloat32Bytes(
-      floatParts.toFloat32Bytes(),
-    ).toDouble();
-    if ((value - float32Value).abs() < 1e-3) {
-      return CborFloat(float32Value);
-    }
-
-    throw ArgumentError('Cannot reasonably encode decimal $value');
-  }
+  CborValue encode(dynamic data) => CompactFloat(data as num).toCbor();
 }
 
 class StringField extends Field {
@@ -229,6 +190,35 @@ class EnumArrayField extends EnumFieldBase {
     }
 
     return CborList(keys.map((int k) => CborSmallInt(k)).toList());
+  }
+}
+
+class ColorLabField extends Field {
+  ColorLabField({required super.key, required super.name, super.required})
+    : super(type: FieldType.colorLab);
+
+  @override
+  List<num> decode(CborValue data) {
+    final CborList list = data as CborList;
+    if (list.length != 3) {
+      throw ArgumentError(
+        'Expected 3 values for color_lab, got ${list.length}',
+      );
+    }
+    return list.map(CompactFloat.decode).toList();
+  }
+
+  @override
+  CborValue encode(dynamic data) {
+    final List<dynamic> values = data as List<dynamic>;
+    if (values.length != 3) {
+      throw ArgumentError(
+        'color_lab must have exactly 3 values, got ${values.length}',
+      );
+    }
+    return CborList(
+      values.map((dynamic v) => CompactFloat(v as num).toCbor()).toList(),
+    );
   }
 }
 
